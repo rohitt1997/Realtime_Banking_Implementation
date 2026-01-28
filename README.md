@@ -6,7 +6,7 @@ This project implements a hybrid fraud monitoring framework for banking and fina
 
 The framework uses Jensen–Shannon Distance, Wasserstein Distance, Kolmogorov–Smirnov Test, and Chi-Square Test to detect distributional shifts across numerical and categorical transaction features.
 
-⚙️ Key Features
+Key Features
 
 Streaming-style batch processing
 Automatic reference window management
@@ -16,7 +16,7 @@ Explainable drift reports
 Performance evaluation (Accuracy, Precision, Recall, F1-score)
 Visualization of drift trends and fraud patterns
 
-🏦 Banking Use-Case
+Banking Use-Case
 
 This system is suitable for:
 Digital payment fraud detection
@@ -26,14 +26,14 @@ AML transaction surveillance
 Behavioral risk monitoring systems
 It can be deployed as a microservice connected to live transaction streams (Kafka, APIs, or message queues).
 
-🗂 Dataset
+Dataset
 
 Uses the public PaySim banking transaction dataset:
 PS_20174392719_1491204439457_log.csv
 
 Features include transaction amount, balances, transaction type, origin, destination, and fraud labels.
 
-🛠 Technology Stack
+Technology Stack
 
 Python, Pandas, NumPy
 
@@ -43,14 +43,14 @@ Matplotlib, Seaborn
 
 Statistical drift detection methods
 
-▶️ How to Run
+How to Run
 pip install pandas numpy scikit-learn scipy matplotlib seaborn
 python fraud_drift_engine.py
 
 
 Ensure the dataset path is correctly set in the script.
 
-📈 Output
+Output
 
 Drift detection logs
 
@@ -62,7 +62,7 @@ Heatmaps of feature drift
 
 Sample suspicious transactions
 
-🔍 Future Enhancements
+Future Enhancements
 
 Integration with Kafka / real-time pipelines
 
@@ -219,6 +219,6 @@ Cloud / Bank Tech Stack Example
 | Alerts        | Splunk, ServiceNow        |
 | Security      | OAuth2, Vault             |
 
-🧠 Research Alignment
+ Research Alignment
 
 This framework supports research on fraud evolution, data drift, and adaptive monitoring systems in financial environments. It is suitable for academic experimentation as well as real-world banking prototypes.
