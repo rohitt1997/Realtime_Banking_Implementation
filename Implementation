@@ -1,0 +1,78 @@
+The Real-Time Architecture
+To demonstrate "Real-Time," you must simulate three distinct layers: the Generator (The Bank), the Processor (Your Engine), and the Observer (The Dashboard).
+
+A. The Data Generator (Simulating the Bank)
+Instead of loading the whole CSV, write a script that "drips" data into your system.
+
+Action: Create a script that reads PaySim and sends 5–10 transactions per second to a FastAPI endpoint or a Kafka topic.
+
+Why: This proves your system can handle continuous ingestion without crashing.
+
+B. The "In-Memory" Feature Store
+In real-time, you can't query a slow SQL database for every transaction.
+
+Action: Use Redis or a simple Python dictionary to store the last 5,000 transactions.
+
+Logic: Every time a new transaction arrives, append it to your "Current Window" and drop the oldest one from the "Reference Window."
+
+2. Visualizing Drift (The "Analyst View")
+To show the project effectively, you need a front-end. Use Streamlit (easiest for Python) or Grafana.
+
+The Dashboard should display:
+Drift Gauge: A needle moving in real-time showing the current Jensen-Shannon Distance.
+
+Traffic Light System: * 🟢 Green: Stable distribution.
+
+🟡 Yellow: Minor drift (behavioral shift detected).
+
+🔴 Red: Critical drift (possible new fraud attack).
+
+The "Suspect" Feed: A scrolling table of transactions flagged as fraud by your engine.
+Practical Demo Script
+If you are presenting this, follow this flow to show the "Real-Time" value:
+Step,Action,What the Audience Sees
+1. Baseline,"Start the generator with ""Normal"" transactions.",Dashboard is green; Drift score is near 0.0.
+2. The Attack,"Inject ""High Amount"" or ""Transfer"" heavy data.",The JS-Distance spike! The gauge turns red.
+3. Detection,The Engine flags the new transactions.,"The ""Suspect Feed"" populates with the injected data."
+4. Resolution,The Engine updates its reference window.,"The system ""learns"" the new normal and stabilizes."
+
+
+4. Tools to Use
+Component,Tool Recommendation
+Dashboard,Streamlit (Live updates with st.empty() or st.dataframe)
+Database,SQLite (Easy to set up) or InfluxDB (Built for time-series)
+Processing,FastAPI (To receive transaction data via JSON)
+Visuals,"Plotly (For interactive, real-time charts)"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
